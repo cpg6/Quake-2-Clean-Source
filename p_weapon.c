@@ -744,10 +744,10 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 	int		damage;
 	float	damage_radius;
 	int		radius_damage;
-
-	damage = 100 + (int)(random() * 20.0);
-	radius_damage = 120;
-	damage_radius = 120;
+	// Change damage number to 400 from 100 and radius' to 240 from 120
+	damage = 400 + (int)(random() * 20.0);
+	radius_damage = 240;
+	damage_radius = 240;
 	if (is_quad)
 	{
 		damage *= 4;
@@ -761,7 +761,8 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 
 	VectorSet(offset, 8, 8, ent->viewheight-8);
 	P_ProjectSource (ent->client, ent->s.origin, offset, forward, right, start);
-	fire_rocket (ent, start, forward, damage, 650, damage_radius, radius_damage);
+	// change speed from 650 to 1500
+	fire_rocket (ent, start, forward, damage, 1500, damage_radius, radius_damage);
 
 	// send muzzle flash
 	gi.WriteByte (svc_muzzleflash);
